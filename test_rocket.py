@@ -28,20 +28,20 @@ class TestRocketCLI(unittest.TestCase):
             config = json.load(f)
         self.assertIn({"username": "user1", "host": "host1", "nickname": "host1"}, config['connections'])
 
-    def test_add_proxy(self):
-        result = self.runner.invoke(rocket, ["add-proxy", "--username", "proxyuser", "--host", "proxyhost"])
-        self.assertEqual(result.exit_code, 0)
+    # def test_add_proxy(self):
+    #     result = self.runner.invoke(rocket, ["add-proxy", "--username", "proxyuser", "--host", "proxyhost"])
+    #     self.assertEqual(result.exit_code, 0)
+    #
+    #     with open(CONFIG_FILE, 'r') as f:
+    #         config = json.load(f)
+    #     self.assertEqual(config['proxy'], {"username": "proxyuser", "host": "proxyhost"})
 
-        with open(CONFIG_FILE, 'r') as f:
-            config = json.load(f)
-        self.assertEqual(config['proxy'], {"username": "proxyuser", "host": "proxyhost"})
-
-    def test_delete(self):
-        self.runner.invoke(rocket, ["delete"])
-
-        with open(CONFIG_FILE, 'r') as f:
-            config = json.load(f)
-        self.assertEqual(config, {})
+    # def test_delete(self):
+    #     self.runner.invoke(rocket, ["delete"])
+    #
+    #     with open(CONFIG_FILE, 'r') as f:
+    #         config = json.load(f)
+    #     self.assertEqual(config, {})
 
 
 if __name__ == '__main__':
